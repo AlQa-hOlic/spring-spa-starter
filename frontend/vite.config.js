@@ -11,10 +11,9 @@ export default defineConfig({
     manifest: true,
     rollupOptions: {
       // overwrite default .html entry
-      input: './frontend/main.tsx',
+      input: './src/main.tsx',
     },
   },
-  root: './frontend',
   base: process.env.mode === 'production' ? '/static/' : '/',
   plugins: [react()],
 })

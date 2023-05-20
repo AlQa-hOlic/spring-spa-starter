@@ -14,9 +14,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "outDir": "./build/ts/static",
-    "tsBuildInfoFile": "./build/ts/.tsbuildinfo"
+    "outDir": "../build/ts/static",
+    "tsBuildInfoFile": "../build/ts/.tsbuildinfo"
   },
-  "include": ["./frontend/**/*.ts", "./frontend/**/*.tsx"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["node_modules"]
 }

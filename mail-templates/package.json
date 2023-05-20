@@ -1,0 +1,11 @@
+{
+  "name": "mail-templates",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint:format": "prettier  --loglevel warn --write \"./src**/*.{html,js,jsx,ts,tsx,css,md,json}\" ",
+    "lint": "yarn lint:format"
+  }
+}

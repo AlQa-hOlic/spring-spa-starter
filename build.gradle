@@ -59,7 +59,7 @@ tasks.named('bootRun') {
 
 def buildWebapp = tasks.register('buildWebapp', YarnTask) {
   dependsOn(yarn)
-  args = ['build']
+  args = ['workspace', 'frontend', 'build']
   inputs.dir(fileTree('frontend').exclude('**/*.test.(j|t)sx?').exclude('**/*.spec.(j|t)sx?').exclude('**/__tests__/**/*.(j|t)sx?'))
   inputs.dir('node_modules')
   // inputs.dir("public")
@@ -69,8 +69,8 @@ def buildWebapp = tasks.register('buildWebapp', YarnTask) {
 
 def buildMailTemplates = tasks.register('buildMailTemplates', YarnTask) {
   dependsOn(yarn)
-  args = ['build:mailTemplates']
-  inputs.dir(fileTree('mailTemplates').exclude('**/*.test.(j|t)sx?').exclude('**/*.spec.(j|t)sx?').exclude('**/__tests__/**/*.(j|t)sx?'))
+  args = ['workspace', 'mail-templates', 'build']
+  inputs.dir(fileTree('mail-templates').exclude('**/*.test.(j|t)sx?').exclude('**/*.spec.(j|t)sx?').exclude('**/__tests__/**/*.(j|t)sx?'))
   inputs.dir('node_modules')
   // inputs.dir("public")
   outputs.dir("${buildDir}/resources/main/mailTemplates")
