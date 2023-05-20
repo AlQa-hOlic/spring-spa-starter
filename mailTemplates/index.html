@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body class="flex justify-center items-center">
+    <div class="flex space-x-2 w-full min-w-3xl justify-center">
+      <img
+        class="w-80 hidden md:block object-cover rounded-xl shadow"
+        src="./assets/test-image.jpg"
+      />
+      <div class="flex flex-col space-y-2">
+        <p th:text="#{hello(${name})}" class="text-orange-500 text-3xl">
+          Hello, Peter Static!
+        </p>
+        <p th:if="${name.length() gt 10}">
+          Wow! You've got a long name (more than 10 chars)! <br />
+        </p>
+        <p>
+          You have been successfully subscribed on
+          <span th:text="${#dates.format(subscriptionDate)}">28-12-2012</span>
+        </p>
+        <p th:if="${hobbies != null && #lists.size(hobbies) > 0}">
+          Your hobbies are:
+        </p>
+        <ul
+          th:if="${hobbies != null && #lists.size(hobbies.length) > 0}"
+          th:remove="all-but-first"
+          class="list-disc ml-4"
+        >
+          <li th:each="hobby : ${hobbies}" th:text="${hobby}">Reading</li>
+          <li>Writing</li>
+          <li>Bowling</li>
+        </ul>
+        <p>
+          Regards,<br />
+          &emsp;<em class="font-semibold">The Thymeleaf Team</em>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

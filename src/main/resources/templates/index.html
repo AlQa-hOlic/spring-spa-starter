@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spring Boot Vite JS Template</title>
+
+    <!-- <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta name="_csrf_parameter" th:content="${_csrf.parameterName}" /> -->
+
+    <script
+      th:unless="${#arrays.contains(@environment.getActiveProfiles(),'production')}"
+      type="module"
+      src="http://localhost:5173/@vite/client"
+    ></script>
+
+    <!-- If you're using vite with React, this next script will be needed for HMR -->
+    <script
+      th:unless="${#arrays.contains(@environment.getActiveProfiles(),'production')}"
+      type="module"
+    >
+      import RefreshRuntime from 'http://localhost:5173/@react-refresh'
+
+      if (RefreshRuntime) {
+        RefreshRuntime.injectIntoGlobalHook(window)
+        window.$RefreshReg$ = () => {}
+        window.$RefreshSig$ = () => (type) => type
+        window.__vite_plugin_react_preamble_installed__ = true
+      }
+    </script>
+
+    <link
+      th:if="${#arrays.contains(@environment.getActiveProfiles(),'production')}"
+      th:each="css: ${cssFiles}"
+      rel="stylesheet"
+      th:href="${css}"
+    />
+  </head>
+  <body>
+    <noscript>
+      This page requires javascript to run. Please, enable javascript.
+    </noscript>
+    <div id="app-root"></div>
+    <script
+      th:unless="${#arrays.contains(@environment.getActiveProfiles(),'production')}"
+      type="module"
+      src="http://localhost:5173/main.tsx"
+    ></script>
+
+    <script
+      th:if="${#arrays.contains(@environment.getActiveProfiles(),'production')}"
+      th:src="${entrypoint}"
+    ></script>
+  </body>
+</html>

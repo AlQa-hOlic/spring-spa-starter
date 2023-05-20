@@ -1,0 +1,35 @@
+app:
+  secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+spring:
+  application:
+    name: spring-spa-starter
+  webflux:
+    static-path-pattern: /static/**
+  mail:
+    host: 127.0.0.1
+    port: 1025
+  thymeleaf:
+    cache: false
+  messages:
+    basename: i18n/messages
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: xxxxxxxxxxxxxxxxxxxxx
+            clientSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: ['health', 'prometheus', 'metrics']
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true

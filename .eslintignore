@@ -1,0 +1,8 @@
+.yarn
+dist
+bin
+node_modules
+**/templates/**/*.html
+emailTemplates/**/*.html
+mailTemplates/**/*.html
+build
